@@ -87,6 +87,7 @@ public class ListPicker extends CordovaPlugin {
                 
                 // Set dialog properties
                 builder.setTitle(title);
+                builder.setMessage("Begin typing to refine the list");
                 builder.setCancelable(true);
                 
                 final EditText editText = new EditText(cordova.getActivity());
