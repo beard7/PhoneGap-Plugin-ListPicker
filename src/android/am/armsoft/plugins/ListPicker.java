@@ -9,6 +9,16 @@ import org.json.JSONException;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
@@ -78,6 +88,16 @@ public class ListPicker extends CordovaPlugin {
                 // Set dialog properties
                 builder.setTitle(title);
                 builder.setCancelable(true);
+                
+                final EditText editText = new EditText(MainActivity.this);
+                final ListView listview = new ListView(MainActivity.this);
+                
+                LinearLayout layout = new LinearLayout(cordova.getActivity());
+                layout.setOrientation(LinearLayout.VERTICAL);
+                layout.addView(editText);
+                layout.addView(listview);
+                
+                
                 builder.setSingleChoiceItems(texts, selectedIndex, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int index) {
                         try {
@@ -98,6 +118,7 @@ public class ListPicker extends CordovaPlugin {
                 }); 
                 
                 // Show alert dialog
+                builder.setView(layout);
                 AlertDialog alert = builder.create();
                 alert.getWindow().getAttributes().windowAnimations = android.R.style.Animation_Dialog;
                 alert.show(); 
