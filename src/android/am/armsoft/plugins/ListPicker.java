@@ -89,8 +89,8 @@ public class ListPicker extends CordovaPlugin {
                 builder.setTitle(title);
                 builder.setCancelable(true);
                 
-                final EditText editText = new EditText(MainActivity.this);
-                final ListView listview = new ListView(MainActivity.this);
+                final EditText editText = new EditText(cordova.getActivity());
+                final ListView listview = new ListView(cordova.getActivity());
                 
                 LinearLayout layout = new LinearLayout(cordova.getActivity());
                 layout.setOrientation(LinearLayout.VERTICAL);
