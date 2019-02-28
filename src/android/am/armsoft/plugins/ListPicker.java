@@ -97,19 +97,6 @@ public class ListPicker extends CordovaPlugin {
                         callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.ERROR));
                     } 
                 }); 
-                builder.setOnKeyListener(new DialogInterface.OnKeyListener() {
-                    public void onKey(DialogInterface dialog, int index) {
-                        try {
-                            final JSONObject selectedItem = items.getJSONObject(index);
-                            final String selectedValue = selectedItem.getString("value");
-                            dialog.dismiss();
-                            callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, selectedValue));
-                        }
-                        catch (JSONException e) {
-                            callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.JSON_EXCEPTION));
-                        }
-                    }
-                });
                 
                 // Show alert dialog
                 AlertDialog alert = builder.create();
